@@ -1,6 +1,6 @@
 #-*-coding:utf-8-*-
 import tornado.web
-import MySQLdb
+from utils.mysqlhelper import get_res
 
 
 class LoginHandler(tornado.web.RequestHandler):
@@ -9,4 +9,6 @@ class LoginHandler(tornado.web.RequestHandler):
         self.render('login.html')
 
     def post(self):
-        pass
+        name = self.get_argument('name', None)
+        print name
+        self.redirect('/index')

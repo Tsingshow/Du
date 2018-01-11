@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ting</title>
+<link rel="stylesheet" media="all" href="/assets/application-d7a1395a41ce23997bea1a9d28a4563d.css" data-turbolinks-track="true" /><script src="/assets/application-797bedbb843dcb7c3df20a3e269a80fe.js" data-turbolinks-track="true"></script><meta name="csrf-param" content="authenticity_token" />
+<script>
+  $(function(){
+    setTimeout(function(){
+      $(".ui.flash").closest(".message").addClass('animated fadeOutUp')
+                                                        .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
+      function(){
+        $('#t-flash').remove();
+      });
+    },3000)
+  })
+</script><div class="container animated fadeIn"><div id="canvas-bg"></div><canvas id="particles"></canvas><div class="ui grid"><div class="three wide column"></div><div class="ten wide column"><div class="ui grid" id="user-show"><div class="one wide column"></div><div class="fourteen wide column"><div class="ui grid"><div class="one wide column"></div><div class="ui five wide column center aligned info-column"><img class="ui image circular lg  run-popup" src="http://7tsy2n.com1.z0.glb.clouddn.com/uploads%2Fuser%2Favatar%2F14%2Flarge_Jun.jpg" alt="Uploads%2fuser%2favatar%2f14%2flarge jun" /><div class="center"><h3>Blog</h3></div><div class="center bio">喜欢收集情歌~_~</div><div class="ui divider"></div><div class="user-status ui left aligned basic segment"><div class="user-created-at"><p>Created at: about 3 years ago</p></div><div class="user-songs-count"><p>Total Songs: 6</p></div><div class="user-comments-count"><p>Total Comments: 4</p></div></div></div><div class="nine wide column content-column"><div class="ui secondary large menu" data-loading="Loading..."><a class="active item" data-remote="true" href="http://tinger.herokuapp.com/user_songs?id=Blog">Songs</a><a class="item" data-remote="true" href="http://tinger.herokuapp.com/favorite_songs?id=Blog">Likes</a><a class="item" data-remote="true" href="http://tinger.herokuapp.com/recent_comments?id=Blog">Comments</a></div><div class="status-panel"><div class="songs-list"><a class="ui playBtn" data-xiami_id="1795536228"><i class="play icon"></i></a><a href="/songs/175">凉凉</a><div class="ui hidden divider"></div></div><div class="songs-list"><a class="ui playBtn" data-xiami_id="70744"><i class="play icon"></i></a><a href="/songs/146">To You</a><div class="ui hidden divider"></div></div><div class="songs-list"><a class="ui playBtn" data-xiami_id="377546"><i class="play icon"></i></a><a href="/songs/51">慢慢</a><div class="ui hidden divider"></div></div><div class="songs-list"><a class="ui playBtn" data-xiami_id="174697"><i class="play icon"></i></a><a href="/songs/34">情人</a><div class="ui hidden divider"></div></div><div class="songs-list"><a class="ui playBtn" data-xiami_id="29609"><i class="play icon"></i></a><a href="/songs/30">童话</a><div class="ui hidden divider"></div></div><div class="songs-list"><a class="ui playBtn" data-xiami_id="3381903"><i class="play icon"></i></a><a href="/songs/17">你不是真正的快乐</a><div class="ui hidden divider"></div></div></div></div></div></div></div></div></div><audio data-xiami_id="-1" id="player"></audio><script type="text/javascript">$(function() {
+  if($("#particles").size()>0){
+    (function() {
+      var width, height, largeHeader, canvas, ctx, circles, target, animateHeader = true;
+      width = $('#canvas-bg').width();
+      height= $('#canvas-bg').height();
+      target = {x: 0, y: height};
+      largeHeader = document.getElementById('canvas-bg');
+      largeHeader.style.height = height+'px';
+      canvas = document.getElementById('particles');
+      canvas.width = width;
+      canvas.height = height;
+      ctx = canvas.getContext('2d');
+
+      circles = [];
+      for(var x = 0; x < width*0.5; x++) {
+        var c = new Circle();
+        circles.push(c);
+      }
+      animate();
+        window.addEventListener('resize',function(){
+        width = window.innerWidth;
+            canvas.width = width;
+        });
+        function animate() {
+            if(animateHeader) {
+                ctx.clearRect(0,0,width,height);
+                for(var i in circles) {
+                    circles[i].draw();
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        function Circle() {
+            var _this = this;
+
+            (function() {
+                _this.pos = {};
+                init();
+            })();
+
+            function init() {
+                _this.pos.x = Math.random()*width;
+                _this.pos.y = height+Math.random()*100;
+                _this.alpha = 0.1+Math.random()*0.3;
+                _this.scale = 0.1+Math.random()*0.3;
+                _this.velocity = Math.random();
+            }
+
+            this.draw = function() {
+                if(_this.alpha <= 0) {
+                    init();
+                }
+
+                _this.pos.x -=0.1;
+                _this.pos.y -= _this.velocity;
+                _this.alpha -= 0.0005;
+                ctx.beginPath();
+                ctx.arc(_this.pos.x, _this.pos.y, _this.scale*10, 0, 2 * Math.PI, false);
+                ctx.fillStyle = 'rgba(255,255,255,'+ _this.alpha+')';
+                ctx.fill();
+            };
+        }
+    })();
+  }})</script></div></body></html>
